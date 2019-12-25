@@ -17,14 +17,7 @@ int main()
 	std::queue<Message*> storehouse;
 	bool flag = true;
 	while (flag) {
-		Message* msg = chToManager->get(5000);
-		if (msg == nullptr) {
-			flag = false;
-			cout << "больше обращений нет" << endl;
-			chToServer->putT(new Message(Code::Manager, Code::MACHINE_OFF, ""), 2000);
-			cout << "менеджер отключает станки" << endl;
-			continue;
-		}
+		Message* msg = chToManager->get();
 		switch (msg->sender) {
 		case Code::Developer:
 			cout << "менеджер отправляет задание на сервер: " << msg->data << endl;

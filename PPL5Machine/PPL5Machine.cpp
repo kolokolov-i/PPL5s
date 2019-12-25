@@ -14,12 +14,7 @@ int main()
 	Channel* chToServer = new Channel(L"ToServer");
 	bool flag = true;
 	while (flag) {
-		Message* msg = chToMachine->get(10000);
-		if (msg == nullptr) {
-			flag = false;
-			cout << "станок останавливается" << endl;
-			continue;
-		}
+		Message* msg = chToMachine->get();
 		if (msg->sender == Code::Server) {
 			switch (msg->code) {
 			case Code::STATE_DEVELOPED: {

@@ -15,12 +15,7 @@ int main()
 	Channel* chToManager = new Channel(L"ToManager");
 	bool flag = true;
 	while (flag) {
-		Message* msg = chToDeveloper->get(5000);
-		if (msg == nullptr) {
-			flag = false;
-			cout << "больше обращений нет" << endl;
-			continue;
-		}
+		Message* msg = chToDeveloper->get();
 		string order;
 		order = msg->data;
 		cout << "инженер получил заказ: " << order << endl;

@@ -15,12 +15,7 @@ int main()
 	Channel* chToMachine = new Channel(L"ToMachine");
 	bool flag = true;
 	while (flag) {
-		Message* msg = chToServer->get(10000);
-		if (msg == nullptr) {
-			flag = false;
-			cout << "сервер отключился" << endl;
-			continue;
-		}
+		Message* msg = chToServer->get();
 		switch (msg->sender) {
 		case Code::Manager:
 			switch (msg->code) {
